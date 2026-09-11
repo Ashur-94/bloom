@@ -1,0 +1,6 @@
+{
+  "name": "Bloom",
+  "description": "AI-powered plant and floral design platform",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,269 @@
+@import "tailwindcss";
+
+:root {
+  --radius: 1rem;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+.font-serif {
+  font-family: 'Source Serif 4', serif;
+}
+
+@layer components {
+  .liquid-glass {
+    background: rgba(255, 255, 255, 0.01);
+    background-blend-mode: luminosity;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: none;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+  .liquid-glass::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.4px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.15) 20%, transparent 40%, transparent 60%, rgba(255, 255, 255, 0.15) 80%, rgba(255, 255, 255, 0.45) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .liquid-glass-strong {
+    background: rgba(255, 255, 255, 0.03);
+    background-blend-mode: luminosity;
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+    border: none;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    position: relative;
+    overflow: hidden;
+  }
+  .liquid-glass-strong::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.4px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.2) 20%, transparent 40%, transparent 60%, rgba(255, 255, 255, 0.2) 80%, rgba(255, 255, 255, 0.5) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Uiverse.io Button Style */
+  .uiverse-btn {
+    position: relative;
+    width: auto;
+    min-width: 140px;
+    height: 48px;
+    background-color: #000;
+    display: inline-flex;
+    align-items: center;
+    color: white;
+    flex-direction: row;
+    justify-content: center;
+    border: none;
+    padding: 12px 20px;
+    gap: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    overflow: visible;
+  }
+
+  .uiverse-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    left: -4px;
+    top: -2px;
+    margin: auto;
+    width: calc(100% + 8px);
+    height: calc(100% + 4px);
+    border-radius: 14px;
+    background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100% );
+    z-index: -10;
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .uiverse-btn::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100% );
+    transform: translate3d(0, 0, 0) scale(0.95);
+    filter: blur(20px);
+    border-radius: 12px;
+  }
+
+  .uiverse-btn:hover::after {
+    filter: blur(30px);
+  }
+
+  .uiverse-btn:hover::before {
+    transform: rotate(-180deg);
+  }
+
+  .uiverse-btn:active::before {
+    scale: 0.95;
+  }
+
+  /* Uiverse.io Radio Switch Style */
+  .radio-container {
+    --main-color: #ffffff;
+    --main-color-opacity: rgba(255, 255, 255, 0.15);
+    --total-radio: 3;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-left: 0.5rem;
+  }
+  .radio-container input {
+    cursor: pointer;
+    appearance: none;
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
+  .radio-container .glider-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(27, 27, 27, 1) 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    width: 2px;
+  }
+  .radio-container .glider-container .glider {
+    position: relative;
+    height: calc(100% / var(--total-radio));
+    width: 100%;
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0) 0%,
+      var(--main-color) 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    transition: transform 0.5s cubic-bezier(0.37, 1.95, 0.66, 0.56);
+  }
+  .radio-container .glider-container .glider::before {
+    content: "";
+    position: absolute;
+    height: 60%;
+    width: 300%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--main-color);
+    filter: blur(10px);
+  }
+  .radio-container .glider-container .glider::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 150px;
+    background: linear-gradient(
+      90deg,
+      var(--main-color-opacity) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+  .radio-container label {
+    cursor: pointer;
+    padding: 0.75rem 1rem;
+    position: relative;
+    color: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease-in-out;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .radio-container input:checked + label {
+    color: var(--main-color);
+  }
+
+  .radio-container input:nth-of-type(1):checked ~ .glider-container .glider {
+    transform: translateY(0);
+  }
+
+  .radio-container input:nth-of-type(2):checked ~ .glider-container .glider {
+    transform: translateY(100%);
+  }
+
+  .radio-container input:nth-of-type(3):checked ~ .glider-container .glider {
+    transform: translateY(200%);
+  }
+
+  /* Uiverse.io Card Style */
+  .uiverse-card {
+    --background: linear-gradient(to left, #8c43f2 0%, #ff5c00 100%);
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border-radius: 1rem;
+    overflow: visible;
+    background: #8c43f2;
+    background: var(--background);
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  .uiverse-card::after {
+    position: absolute;
+    content: "";
+    top: 40px;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    transform: scale(0.9);
+    filter: blur(30px);
+    background: #8c43f2;
+    background: var(--background);
+    transition: opacity 0.5s;
+  }
+
+  .uiverse-card-info {
+    --color: #121212;
+    background: var(--color);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    border-radius: 0.6rem;
+    padding: 1rem;
+  }
+
+  .uiverse-card:hover::after {
+    opacity: 0;
+  }
+
+  .uiverse-card:hover .uiverse-card-info {
+    color: #8c43f2;
+    transition: color 1s;
+  }
+}
+

@@ -1,0 +1,13 @@
+title: Bloom (KAD)
+description: AI-powered plant and floral design platform
+theme: jekyll-theme-minimal
+
+# Exclude node_modules and dev config from Jekyll build
+exclude:
+  - node_modules/
+  - package.json
+  - package-lock.json
+  - bun.lock
+  - tsconfig.json
+  - vite.config.ts
+  - src/

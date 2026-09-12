@@ -23,6 +23,8 @@ import {
   ChevronRight,
   Heart
 } from 'lucide-react';
+import logoImg from './assets/logo.png';
+import heroFlowersImg from './assets/hero-flowers.png';
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -73,7 +75,7 @@ export default function App() {
             <header className="flex items-center justify-between">
               <div className="flex items-center gap-3 cursor-pointer" onClick={() => setActiveModal(null)}>
                 <img
-                  src="/logo.png"
+                  src={logoImg}
                   alt="Bloom Logo"
                   className="w-8 h-8 rounded-full object-cover shadow-sm"
                   onError={(e)=>{
@@ -100,7 +102,7 @@ export default function App() {
             <div className="my-auto py-12 flex flex-col items-center text-center">
               <div className="mb-6 p-2 liquid-glass rounded-full shadow-2xl">
                 <img
-                  src="/logo.png"
+                  src={logoImg}
                   alt="Bloom Emblem"
                   className="w-20 h-20 rounded-full object-cover"
                 />
@@ -295,7 +297,7 @@ export default function App() {
             >
               <div className="flex items-center gap-4">
                 <img
-                  src="/assets/hero-flowers.png"
+                  src={heroFlowersImg}
                   alt="Advanced Plant Sculpting"
                   className="w-24 h-16 rounded-2xl object-cover shadow-lg"
                   onError={(e)=>{
@@ -327,7 +329,7 @@ export default function App() {
             <div>
               <div className="flex items-center justify-between mb-10">
                 <div className="flex items-center gap-3">
-                  <img src="/logo.png" alt="Logo" className="w-8 h-8 rounded-full object-cover" />
+                  <img src={logoImg} alt="Logo" className="w-8 h-8 rounded-full object-cover" />
                   <span className="font-semibold text-xl tracking-tighter">bloom menu</span>
                 </div>
                 <button
@@ -446,10 +448,10 @@ export default function App() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                   {[
-                    { title: 'Neon Orchid v2', tag: 'Bioluminescent', image: '/assets/hero-flowers.png' },
-                    { title: 'Fractal Lotus', tag: 'Quantum Geometry', image: '/logo.png' },
-                    { title: 'Obsidian Fern', tag: 'Minimalist Monolith', image: '/assets/hero-flowers.png' },
-                    { title: 'Ethereal Rose', tag: 'Fluid Glass Spec', image: '/logo.png' },
+                    { title: 'Neon Orchid v2', tag: 'Bioluminescent', image: heroFlowersImg },
+                    { title: 'Fractal Lotus', tag: 'Quantum Geometry', image: logoImg },
+                    { title: 'Obsidian Fern', tag: 'Minimalist Monolith', image: heroFlowersImg },
+                    { title: 'Ethereal Rose', tag: 'Fluid Glass Spec', image: logoImg },
                   ].map((item, idx) => (
                     <div key={idx} className="liquid-glass rounded-2xl p-4 flex flex-col gap-3">
                       <div className="h-32 rounded-xl overflow-hidden bg-white/5 relative">
